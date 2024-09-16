@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+
+{% block header %}
+<header>
+    {% include 'partials/nav.html' %}
+</header>
+{% endblock %}
+
+
+{% block content %}
+
+
+<section class="home" id="home">
+    <div class="home_content">
+
+        <div class="wrapper">
+            <div class="container">
+                <div class="form">
+                    <p class="heading">Edit Employee: {{ employee.name|title }}</p>
+                    <hr>
+                    <form method="post">
+                        {% csrf_token %}
+                        <div class="form-container">
+                            {{ form.as_p }}
+                            <button class="btn" type="submit">Update</button>
+                            <a class="back_to_home" href="{% url 'home' %}">Back to Home</a>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+{% endblock %}

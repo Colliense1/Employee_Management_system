@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+
+
+{% block header %}
+<header>
+    {% include 'partials/nav.html' %}
+</header>
+{% endblock %}
+
+
+{% block content %}
+
+<section class="home" id="home">
+
+    <div class="home_content">
+        <h1>Update/Delete</h1>
+        <hr>
+        <table>
+            <tr>
+                <th>SL</th>
+                <th>Name</th>
+                <th>Phone Number</th>
+                <th>Designation</th>
+                <th>Salary</th>
+                <th>Gender</th>
+                <th>Action</th>
+            </tr>
+
+            {% for employee in employees %}
+
+            <tr>
+                <td> {{ forloop.counter }} </td>
+                <td> {{ employee.name|title }} </td>
+                <td> {{ employee.phone_number }} </td>
+                <td> {{ employee.designation|title }} </td>
+                <td> {{ employee.salary }} </td>
+                <td> {{ employee.gender|title }} </td>
+                <td>
+                    <a class="update_delete_btn" href="{% url 'update_employee' employee.pk %}"><i
+                            class='bx bxs-edit-alt'></i></a>
+                    <a class="update_delete_btn" href="{% url 'delete_employee' employee.pk %}"><i
+                            class='bx bxs-x-square'></i></a>
+                </td>
+            </tr>
+
+            {% endfor %}
+
+        </table>
+    </div>
+</section>
+{% endblock %}
+
+<!--
+    <ul>
+        {% for employee in employees %}
+        <li>{{ employee.name }} - {{ employee.designation }} - {{ employee.short_description }}
+            <a href="{% url 'update_employee' employee.pk %}">Edit</a>
+            <a href="{% url 'delete_employee' employee.pk %}">Delete</a>
+        </li>
+        {% endfor %}
+    </ul>
+    -->

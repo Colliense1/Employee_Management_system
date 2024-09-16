@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block header %}
+<header>
+    {% include 'partials/nav.html' %}
+</header>
+{% endblock %}
+
+{% block content %}
+
+<section class="home" id="home">
+    <div class="home_content">
+        <h1>All Employees</h1>
+        <hr>
+
+        <table style="width: 100%; text-align: center;">
+            <tr>
+                <th>SL</th>
+                <th>Name</th>
+                <th>Phone Number</th>
+                <th>Designation</th>
+                <th>Action</th>
+            </tr>
+
+            {% for employee in employees %}
+
+            <tr>
+                <td> {{ forloop.counter }} </td>
+                <td> {{ employee.name|title }} </td>
+                <td> {{ employee.phone_number }} </td>
+                <td> {{ employee.designation|title }} </td>
+                <td>
+                    <a class="profile_btn" href="{% url 'employee_detail' employee.pk %}">Profile</a>
+                </td>
+            </tr>
+
+            {% endfor %}
+
+        </table>
+    </div>
+</section>
+
+{% endblock %}

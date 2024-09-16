@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% load static %}
+
+<body class="employee_details_body">
+
+    <div class="profile_wrapper">
+
+        <div class="emdetails_update_delete_div">
+            <a class="emdetails_back_to_home" href="{% url 'home' %}"><i class='bx bx-arrow-back'></i></a>
+            <a class="update_btn" href="{% url 'update_employee' employee.pk %}"><i class='bx bxs-edit-alt'></i></a>
+            <a class="delete_btn" href="{% url 'delete_employee' employee.pk %}"><i class='bx bxs-x-square'></i></a>
+        </div>
+        <div class="profile">
+            <div class="profile_avatar">
+                {% if employee.gender == 'M' %}
+                <img src="{% static 'images/male-avatar.png' %}" alt="Male">
+                {% elif employee.gender == 'F' %}
+                <img src="{% static 'images/female-avatar.png' %}" alt="Female">
+                {% endif %}
+            </div>
+
+            <div class="profile_details">
+                <h1>{{ employee.name|title }}</h1>
+                <p class="pd"><strong>Phone Number:</strong> {{ employee.phone_number }}</p>
+                <p class="pd"><strong>Designation:</strong> {{ employee.designation|title }}</p>
+            </div>
+        </div>
+        <div class="em_details_asd">
+            <p><strong>Address:</strong> {{ employee.address }}</p>
+            <p><strong>Salary:</strong> {{ employee.salary }}</p>
+            <p><strong>Description:</strong> {{ employee.short_description }}</p>
+        </div>
+
+    </div>
+
+
+</body>
+{% endblock %}

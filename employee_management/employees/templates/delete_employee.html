@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block header %}
+<header>
+    {% include 'partials/nav.html' %}
+</header>
+{% endblock %}
+
+
+{% block content %}
+
+
+<section class="home" id="home">
+    <div class="home_content">
+
+        <div class="wrapper">
+            <div class="container">
+                <div class="form">
+                    <p class="heading">Delete Employee: {{ employee.name }}</p>
+                    <hr>
+                    <form method="post">
+                        {% csrf_token %}
+                        <div class="form-container">
+                            {{ form.as_p }}
+                            <p>Are you sure want to delete this employee?</p>
+                            <button class="btn" type="submit">Delete</button>
+                            <a class="back_to_home" href="{% url 'home' %}">Cancel</a>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+{% endblock %}
